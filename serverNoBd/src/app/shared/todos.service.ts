@@ -25,6 +25,11 @@ export  class TodosService{
   delete(id: number){
     this.todos = this.todos.filter(t => t.id !== id);
   }
+
+  addTodo(todo: Todo){
+    this.todos.push(todo);
+  }
+
 }
 export interface Todo {
   id: number;
