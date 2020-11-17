@@ -1,0 +1,52 @@
+<div class="container">
+  <br>
+  <h1>
+    <mark>auto:</mark>
+    {{name}}<small>{{model}}</small></h1>
+  <div class="alert alert-success">
+    характеристики автомобиля
+    <ul>
+      <li> скорость <strong>{{speed}}</strong></li>
+      <li> цвет авто <strong>{{colors.car}}</strong></li>
+      <li> цвет салона <strong>{{colors.salon}}</strong></li>
+      <li> цвет колес <strong>{{colors.wheels}}</strong></li>
+    </ul>
+  </div>
+
+  <button class="btn btn-danger" (click)="showEdit()" >редактировать</button>
+
+  <form *ngIf=isEdit>
+    <div class="form-group">
+      <input type="text" placeholder="name car"
+             class="form-control" [(ngModel)]="name"  name = "name">
+      <input type="number" placeholder="speed car"
+             class="form-control" [(ngModel)]="speed"  name = "speed">
+      <input type="text" placeholder="model car"
+             class="form-control" [(ngModel)]="model"  name = "model">
+
+    </div>
+  </form>
+
+  <form (submit)="addOpt(opt.value)">
+    <div class="form-group">
+      <label for="option">добавляем новые возможности</label>
+      <input type="text" id = "option" placeholder="введите значение"
+             class="form-control" #opt>
+      <button type="submit" class="btn btn-outline-success" >select</button>
+    </div>
+  </form>
+
+  <h2>возможности</h2>
+  <div class="alert alert=warning">
+    <ul>
+      <li *ngFor="let opt of options; let i = index">
+        {{i}} - {{opt}} <button class="btn btn-warning btn-sm" (click)="delete(opt)">x</button></li>
+    </ul>
+  </div>
+
+  <h3>выбера авто</h3>
+  <button class="btn btn-danger" (click)="carSelect('bmw')" >bmv</button>
+  <button class="btn btn-success" (click)="carSelect('audi')" >Audi</button>
+  <button class="btn btn-info" (click)="carSelect('mercedes')" >mercedes</button>
+
+</div>
